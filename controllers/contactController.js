@@ -45,6 +45,7 @@ exports.view = function (req, res) {
         });
     });
 };
+
 // Handle update contact info
 exports.update = function (req, res) {
 Contact.findById(req.params.contact_id, function (err, contact) {
