@@ -68,7 +68,8 @@ contact.name = req.body.name ? req.body.name : contact.name;
 };
 // Handle delete contact
 exports.delete = function (req, res) {
-    Contact.remove({
+    console.log(req.params);
+    Contact.deleteOne({        
         _id: req.params.contact_id
     }, function (err, contact) {
         if (err)
