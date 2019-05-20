@@ -8,8 +8,12 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 // Initialize the app
 let app = express();
+//  Import Cors
+var cors = require('cors')
 // Import routes
 let apiRoutes = require("./api-routes")
+//  use cors
+app.use(cors())
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({
     extended: true
