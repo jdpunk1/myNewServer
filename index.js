@@ -34,8 +34,8 @@ let port = process.env.PORT ?  process.env.PORT : 8080;
 
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable, db name can be added to env variable here
-mongoose.connect(process.env.dbConnect);
-var db = mongoose.connection;
+// mongoose.connect(process.env.dbConnect);
+// var db = mongoose.connection;
 // console.log("db", db)
 // Send message for default URL
 app.get('/', (req, res) => res.send('Hello World with Express'));

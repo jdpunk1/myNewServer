@@ -11,7 +11,7 @@ exports.gcp = async function(){
         console.log("gcpData", data); // ... All metadata properties
         return data
     }else{
-        return
+        return "data unavailable"
     }
 
 }
