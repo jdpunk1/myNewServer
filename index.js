@@ -23,9 +23,8 @@ app.use(bodyParser.urlencoded({
 let gcpUtils = require("./controllers/gcpController");
 console.log(gcpUtils)
 // TODO resolve gcp before continuing (async)
-const gcpData = gcpUtils.gcp().then(function(data){
+const gcpData = gcpUtils.gcp();
 
-});
 
 
 // TODO assign metadata to consts
