@@ -23,25 +23,35 @@ app.use(bodyParser.urlencoded({
 let gcpUtils = require("./controllers/gcpController");
 console.log(gcpUtils)
 // TODO resolve gcp before continuing (async)
-const gcpData = gcpUtils.gcp();
+if(!process.env){
+    async function gcpData(){
+        var myData = await gcpUtils.gcp();
+        if (myData){
+        // TODO assign metadata to consts
+        let port = process.env.PORT ?  process.env.PORT : 8080;
+        // set env vars from dotenv
+        // dotenv.config();
+        
+        app.use(bodyParser.json());
+        // Connect to Mongoose and set connection variable, db name can be added to env variable here
+        mongoose.connect(process.env.dbConnect);
+        var db = mongoose.connection;
+        // console.log("db", db)
+        // Send message for default URL
+        app.get('/', (req, res) => res.send('Hello World with Express'));
+        // Use Api routes in the App
+        app.use('/api', apiRoutes)
+        // Launch app to listen to specified port
+        app.listen(port, function () {
+            console.log("Running RestHub on port " + port);
+        });
+        
+        }else{
+            console.log("No ENV vars or GCP available")
+        }
+     } 
+
+}
 
 
 
-// TODO assign metadata to consts
-let port = process.env.PORT ?  process.env.PORT : 8080;
-// set env vars from dotenv
-// dotenv.config();
-
-app.use(bodyParser.json());
-// Connect to Mongoose and set connection variable, db name can be added to env variable here
-// mongoose.connect(process.env.dbConnect);
-// var db = mongoose.connection;
-// console.log("db", db)
-// Send message for default URL
-app.get('/', (req, res) => res.send('Hello World with Express'));
-// Use Api routes in the App
-app.use('/api', apiRoutes)
-// Launch app to listen to specified port
-app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
-});
