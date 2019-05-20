@@ -22,7 +22,11 @@ app.use(bodyParser.urlencoded({
 // import GCP metadata
 let gcpUtils = require("./controllers/gcpController");
 console.log(gcpUtils)
-const gcpData = gcpUtils.gcp();
+// TODO resolve gcp before continuing (async)
+const gcpData = gcpUtils.gcp().then(function(data){
+
+});
+
 
 // TODO assign metadata to consts
 let port = process.env.PORT ?  process.env.PORT : 8080;

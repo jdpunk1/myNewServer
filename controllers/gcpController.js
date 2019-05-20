@@ -2,7 +2,7 @@
 // handle metadata from within cloud to assign to sys vars
 const gcpMetadata = require('gcp-metadata');
 // check if metadata server is available
-exports.gcp = async function gcp(){
+exports.gcp = async function(){
         const isAvailable = await gcpMetadata.isAvailable();
         console.log("GCPavailable", isAvailable);
     // Access metadata
