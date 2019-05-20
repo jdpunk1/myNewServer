@@ -51,7 +51,8 @@ if(!process.env.PORT){
         }else{
             console.log("No ENV vars or GCP available")
         }
-     } 
+     }
+     gcpData();
 
 }
 
