@@ -28,7 +28,7 @@ if(!process.env.PORT){
     async function gcpData(){
         var myData = await gcpUtils.gcp();
         if (myData){
-            console.log("process.env", process.env)
+            console.log("process.env.Port", process.env.PORT)
         // TODO assign metadata to consts
         let port = process.env.PORT ?  process.env.PORT : 8080;
         // set env vars from dotenv
