@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 let gcpUtils = require("./controllers/gcpController");
 console.log(gcpUtils)
 // TODO resolve gcp before continuing (async)
-console.log("process.env1", process.env)
+console.log("process.env1", process.env.PORT)
 if(!process.env.PORT){
     async function gcpData(){
         var myData = await gcpUtils.gcp();
