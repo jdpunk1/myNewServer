@@ -4,10 +4,11 @@ const gcpMetadata = require('gcp-metadata');
 // check if metadata server is available
 exports.gcp = async function gcp(){
         const isAvailable = await gcpMetadata.isAvailable();
+        console.log("GCPavailable", isAvailable);
     // Access metadata
     if (isAvailable){
         const data = await gcpMetadata.instance();
-        console.log(data); // ... All metadata properties
+        console.log("gcpData", data); // ... All metadata properties
         return data
     }else{
         return
