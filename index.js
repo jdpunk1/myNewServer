@@ -38,7 +38,7 @@ if(!process.env.PORT){
         
         app.use(bodyParser.json());
         // Connect to Mongoose and set connection variable, db name can be added to env variable here
-        mongoose.connect(process.env.DBCONNECT);
+        mongoose.connect(process.env.DBCONNECT, {useNewUrlParser: true});
         var db = mongoose.connection;
         // console.log("db", db)
         // Send message for default URL
