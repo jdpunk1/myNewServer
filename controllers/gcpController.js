@@ -8,7 +8,7 @@ exports.gcp = async function(){
     // Access metadata
     if (isAvailable){
         const data = await gcpMetadata.instance();
-        console.log("gcpData", data); // ... All metadata properties
+        console.log("gcpData", data.attributes); // ... All metadata properties
         return data
     }else{
         return false
