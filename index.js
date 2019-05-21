@@ -28,6 +28,8 @@ if(!process.env.PORT){
     async function gcpData(){
         var myData = await gcpUtils.gcp();
         if (myData){
+            process.env.PORT = myData.PORT;
+            process.env.DBCONNECT = myData.DBCONNECT;
             console.log("process.env.Port", process.env.PORT)
         // TODO assign metadata to consts
         let port = process.env.PORT ?  process.env.PORT : 8080;
@@ -36,7 +38,7 @@ if(!process.env.PORT){
         
         app.use(bodyParser.json());
         // Connect to Mongoose and set connection variable, db name can be added to env variable here
-        mongoose.connect(process.env.dbConnect);
+        mongoose.connect(process.env.DBCONNECT);
         var db = mongoose.connection;
         // console.log("db", db)
         // Send message for default URL
