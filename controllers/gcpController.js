@@ -14,7 +14,7 @@ exports.gcp = async function(){
         data.DBCONNECT = await gcpMetadata.instance({
             property: 'attributes/DBCONNECT',
           });
-        console.log("gcpData:", data.dbConnect); // ... All metadata properties
+        console.log("gcpData:", data.DBCONNECT, data.PORT); // ... All metadata properties
         return data
     }else{
         return false
