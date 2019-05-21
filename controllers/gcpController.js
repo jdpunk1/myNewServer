@@ -11,7 +11,7 @@ exports.gcp = async function(){
             property: 'attributes',
             params: { alt: 'text' }
           });
-        console.log("gcpData", data); // ... All metadata properties
+        console.log("gcpData:", data); // ... All metadata properties
         return data
     }else{
         return false
