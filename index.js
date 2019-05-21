@@ -29,7 +29,7 @@ if(!process.env.PORT){
         var myData = await gcpUtils.gcp();
         if (myData){
             process.env.PORT = myData.PORT;
-            process.env.DBCONNECT = myData.DBCONNECT;
+            process.env.DBCONNECT = myData.DBCONNECT.toString();
             console.log("process.env.Port", process.env.PORT)
         // TODO assign metadata to consts
         let port = process.env.PORT ?  process.env.PORT : 8080;
