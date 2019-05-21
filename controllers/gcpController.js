@@ -7,7 +7,7 @@ exports.gcp = async function(){
         console.log("GCPavailable", isAvailable);
     // Access metadata
     if (isAvailable){
-        const data = await gcpMetadata.instance('PORT');
+        const data = await gcpMetadata.instance();
         console.log("gcpData", data); // ... All metadata properties
         return data
     }else{
