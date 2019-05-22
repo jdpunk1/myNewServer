@@ -14,6 +14,21 @@ exports.gcp = async function(){
         data.DBCONNECT = await gcpMetadata.instance({
             property: 'attributes/DBCONNECT',
           });
+          data.DBPASS = await gcpMetadata.instance({
+            property: 'attributes/DBPASS',
+          });
+          data.DBAUTH = await gcpMetadata.instance({
+            property: 'attributes/DBAUTH',
+          });
+          data.DBHOST = await gcpMetadata.instance({
+            property: 'attributes/DBHOST',
+          });
+          data.DBPORT = await gcpMetadata.instance({
+            property: 'attributes/DBPORT',
+          });
+          data.DBUSER = await gcpMetadata.instance({
+            property: 'attributes/DBUSER',
+          });
         console.log("gcpData:", data.DBCONNECT, data.PORT); // ... All metadata properties
         return data
     }else{

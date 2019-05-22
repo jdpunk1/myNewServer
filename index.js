@@ -28,6 +28,20 @@ if(!process.env.PORT){
     async function gcpData(){
         var myData = await gcpUtils.gcp();
         if (myData){
+
+            process.env.OPT = {
+                user: myData.DBUSER,
+                pass: myData.DBPASS,
+                auth: {
+                    authdb: myData.DBAUTH,
+                }
+            };
+        
+            process.env.DBHOST = myData.DBHOST
+            process.env.DBNAME = myData.DBNAME
+            process.env.DBPORT = myData.DBPORT
+            
+            var connection = mongoose.createConnection(config.database.host, 'mydatabase', config.database.port, opt);
             process.env.PORT = myData.PORT;
             process.env.DBCONNECT = myData.DBCONNECT.toString();
             console.log("process.env.Port", process.env.PORT)
@@ -37,12 +51,14 @@ if(!process.env.PORT){
         // dotenv.config();
         
         app.use(bodyParser.json());
+
         // Connect to Mongoose and set connection variable, db name can be added to env variable here
         mongoose.connect(process.env.DBCONNECT, {useNewUrlParser: true}).catch(error =>{
             console.log("mongoError", error);
         });
+
         var db = mongoose.connection;
-        // console.log("db", db)
+
         // Send message for default URL
         app.get('/', (req, res) => res.send('Hello World with Express'));
         // Use Api routes in the App
@@ -60,5 +76,15 @@ if(!process.env.PORT){
 
 }
 
+
+var opt = {
+    user: config.username,
+    pass: config.password,
+    auth: {
+        authdb: 'admin'
+    }
+};
+
+var connection = mongoose.createConnection(config.database.host, 'mydatabase', config.database.port, opt);
 
 
